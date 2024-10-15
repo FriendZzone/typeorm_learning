@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm";
+import { Client } from "./entities/Client";
 
 const main = async () => {
   try {
@@ -6,15 +7,14 @@ const main = async () => {
       type: "mysql",
       host: "localhost",
       port: 3306,
-      username: "test",
+      username: "root",
       password: "",
       database: "typeorm_learning",
-      entities: [
-        // ....
-      ],
+      entities: [Client],
+      synchronize: true,
     });
 
-    console.log(MysqlDataSource.manager.find);
+    await MysqlDataSource.initialize();
   } catch (error) {
     console.log("Connection error: ", error);
     throw new Error("Connection error");
