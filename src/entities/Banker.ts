@@ -16,7 +16,9 @@ export class Banker extends Person {
   })
   employee_number: string;
 
-  @ManyToMany(() => Client)
+  @ManyToMany(() => Client, {
+    onDelete: "CASCADE",
+  })
   @JoinTable({
     name: "bankers_clients",
     joinColumn: {

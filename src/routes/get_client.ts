@@ -6,7 +6,6 @@ router.get("/api/client/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
   const client = await Client.findOne({
     where: { id: Number(id) },
-    relations: { transactions: true, bankers: true },
   });
 
   if (!client) {

@@ -36,10 +36,14 @@ export class Client extends Person {
   @Column({ type: "simple-array" })
   family_members: string[];
 
-  @OneToMany(() => Transaction, (transaction) => transaction.client)
+  @OneToMany(() => Transaction, (transaction) => transaction.client, {
+    eager: true,
+  })
   transactions: Transaction[];
 
-  @ManyToMany(() => Banker)
+  @ManyToMany(() => Banker, {
+    onDelete: "CASCADE",
+  })
   @JoinTable({
     name: "bankers_clients",
     joinColumn: {
