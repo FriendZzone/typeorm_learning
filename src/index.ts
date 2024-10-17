@@ -3,6 +3,7 @@ import { DataSource } from "typeorm";
 import { Banker } from "./entities/Banker";
 import { Client } from "./entities/Client";
 import { Transaction } from "./entities/Transaction";
+import { connectBankerToClientRouter } from "./routes/connect_banker_to_client";
 import { createBankerRouter } from "./routes/create_banker";
 import { createClientRouter } from "./routes/create_client";
 import { createTransactionRouter } from "./routes/create_transaction";
@@ -27,6 +28,7 @@ const main = async () => {
     app.use(createClientRouter);
     app.use(createBankerRouter);
     app.use(createTransactionRouter);
+    app.use(connectBankerToClientRouter);
 
     app.listen(8080, () => {
       console.log("Server is running on port 8080");
