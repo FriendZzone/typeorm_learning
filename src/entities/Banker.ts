@@ -2,13 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  JoinColumn,
   JoinTable,
   ManyToMany,
   UpdateDateColumn,
 } from "typeorm";
-import { Person } from "./utils/Person";
 import { Client } from "./Client";
+import { Person } from "./utils/Person";
 
 @Entity("banker")
 export class Banker extends Person {
