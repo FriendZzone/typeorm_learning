@@ -7,6 +7,7 @@ import { connectBankerToClientRouter } from "./routes/connect_banker_to_client";
 import { createBankerRouter } from "./routes/create_banker";
 import { createClientRouter } from "./routes/create_client";
 import { createTransactionRouter } from "./routes/create_transaction";
+import { getClientRouter } from "./routes/get_client";
 
 const app = express();
 const main = async () => {
@@ -26,6 +27,7 @@ const main = async () => {
 
     app.use(express.json());
     app.use(createClientRouter);
+    app.use(getClientRouter);
     app.use(createBankerRouter);
     app.use(createTransactionRouter);
     app.use(connectBankerToClientRouter);
